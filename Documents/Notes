@@ -1,0 +1,37 @@
+Dump clang ast:
+---------------
+clang -Xclang -ast-dump [-fsyntax-only] 
+clang-check <path> -ast-dump -ast-dump-filter <filter> [--]
+
+Get the list of tokens:
+-----------------------
+clang-check <path> -ast-list [--]
+
+
+Milestone 1
+===========
+
+1. Discuss the architecture of the protection mechanism to be implemented
+-------------------------------------------------------------------------
+Protect all virtual function callsites to make sure they only call function from
+the correct hierarchy by putting all virtual tables aligned to a certain power
+of two in memory and making a bit cast check and a comparaison to check that we
+dereference the right virtual table. Given the hierarchy of class (with no
+multiple inheritance) we can lay them in memory as nested lists (top-left right
+traversal of the inheritance tree).
+
+2. View clang AST generated for simple C++ programs with classes and virtual functions 
+--------------------------------------------------------------------------------------
+clang-check Virtual.cpp -ast-dump --
+
+3. Print C++ class hierarchy based on clang AST 
+-----------------------------------------------
+
+
+
+
+
+
+Milestone 2
+===========
+
