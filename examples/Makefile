@@ -1,6 +1,7 @@
-BIN_FOLDER=.
-CLANG=clang
-LLVMDIS=llvm-dis
+#BIN=/usr/bin
+BIN=/home/damien/Documents/EPFL/MA3/Semester_Project/vprotect-git/build/bin
+CLANG=$(BIN)/clang
+LLVMDIS=$(BIN)/llvm-dis
 
 BUILD=build
 SOURCES=$(wildcard *.cpp)
