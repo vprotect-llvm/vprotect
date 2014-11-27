@@ -1,5 +1,5 @@
 #BIN=/usr/bin
-BIN=/home/damien/Documents/EPFL/MA3/Semester_Project/vprotect-git/build/bin
+BIN=../build/bin
 CLANG=$(BIN)/clang
 LLVMDIS=$(BIN)/llvm-dis
 
