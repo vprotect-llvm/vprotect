@@ -36,9 +36,17 @@ public:
 class B: public A {
 public:
     int b;
+    virtual int a(){return 45;}
     virtual int x(){return 2;}
     virtual char y(){return 22;}
     virtual long z(){return 222;}
+};
+
+class C: public B {
+public:
+    long c;
+    virtual int a(){return 54;} 
+    virtual char y(){return 33;}
 };
 
 int stoopid(){
@@ -58,6 +66,8 @@ int main(void){
     int x = var->x();
     char y = var->y();
     long z = var->z();
+    B* val = new C();
+    printf("%d\n", val->a());
 
     printf("%d %d %ld\n", x, y, z);
     delete var;
