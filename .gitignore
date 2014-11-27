@@ -3,9 +3,12 @@ llvm
 
 # Build folder
 build
+build-qt
 
 # Binaray files
 *.out
+*.o
+*.ll
 
 # Vim swap files
 *.swp
