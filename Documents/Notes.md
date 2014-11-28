@@ -129,7 +129,7 @@ There is type information in LLVM IR, but we cannot rely on it, compiling with
 
 3. Modify clang to preserve necessary information when it emits LLVM IR. 
 ------------------------------------------------------------------------
-
+see CodeGenModule::Release() in lib/CodeGen/CodeGenModule.cpp
 
 4. Make sure that the modified clang successfully runs on all SPEC2006 benchmarks and manually verify its correctness on a sample from the benchmarks.
 ------------------------------------------------------------------------------------------------------------------------------------------------------
