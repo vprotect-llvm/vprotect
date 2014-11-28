@@ -1,0 +1,28 @@
+# Run "bzip2" spec benchmark with test size and 1 iteration
+    runspec --config mine --size test --iteration 1 bzip2
+
+# Create comands for spec
+    source shrc
+  
+# Folder that holds all your congi files to run benchmark
+    config/
+
+# Results from the run 
+    /home/engels/spec/result/CINT2006.002.test.txt
+
+# Go in the bzip2 benchmark folder
+    go bzip2
+        - exe/ # Executables
+        - run/build_base_mine.????/ # Object files
+        - run/run_base_test_mine.????/ # 
+        - run/run_base_test_mine.0000/speccmds.cmd 
+
+# Rerun the benchmark
+    specinvoke
+    specinvoke -n
+
+# Go in the top benchmark folder  
+    go
+
+# Run only printing the commands wihtout doing actual work
+    runspec --config mine --size test --iteration 1 --fake bzip2 
