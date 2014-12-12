@@ -123,16 +123,36 @@ Milestone 2
 1. Decide which information about class hierarchy, virtual tables and virtual calls is necessary in order to compute and enforce virtual tables layout and insert checks as required for the protection mechanism. 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Full class hierarchy, relation between classes and virtual tables. We will add
-this information in metadata format
+this information in metadata format. We also need to mark all the locations of a
+virtual function load.
 
 2. Find out which of these information is already present in LLVM IR, and which needs to be added. Discuss this findings in person. 
 -----------------------------------------------------------------------------------------------------------------------------------
 There is type information in LLVM IR, but we cannot rely on it, compiling with
--fno-rtti does not preserve that information
+-fno-rtti does not preserve that information.
 
 3. Modify clang to preserve necessary information when it emits LLVM IR. 
 ------------------------------------------------------------------------
-see CodeGenModule::Release() in lib/CodeGen/CodeGenModule.cpp
+see CodeGenModule::Release() in lib/CodeGen/CodeGenModule.cpp.
+
+CodeGenModule::EmitCPSVirtualMetadata => for hierarchy and vtables
+
+CodeGenFunction::GetFunctionPtr => for marking virtual table loads
 
 4. Make sure that the modified clang successfully runs on all SPEC2006 benchmarks and manually verify its correctness on a sample from the benchmarks.
 ------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Milestone 3
+===========
+
+1. Implement an LLVM pass that would enforce the layout of the virtual tables that is required to implement fast checks for the protection mechanism. For now, assume that the pass runs at linktime optimizations phase and has complete information about all classes and virtual tables in the entire program.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2. Schedule the pass to run during linktime optimizations (e.g., similar to the CPI pass or the SafeStack pass).
+----------------------------------------------------------------------------------------------------------------
+
+
+3. Make sure that clang/llvm with the pass being implemented can successfully compile all SPEC2006 benchmarks and the resulting benchmarks run correctly. Manually verify the correctness of the pass on a sample from the benchmarks.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
