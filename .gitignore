@@ -4,6 +4,7 @@ llvm
 # Build folder
 build
 build-qt
+build-no-test
 
 # Binaray files
 *.out
