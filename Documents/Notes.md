@@ -112,6 +112,9 @@ Interesting functions:
                                                  llvm::Type *Ty) = 0;
 
 
+Notes:
+Use dynamic linking
+
 
 
 Milestone 2

@@ -1,5 +1,5 @@
 #BIN=/usr/bin
-BIN=../build/bin
+BIN=../build-no-test/bin
 CLANG=$(BIN)/clang
 LLVMDIS=$(BIN)/llvm-dis
 
