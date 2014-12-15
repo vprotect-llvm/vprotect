@@ -20,3 +20,4 @@ class G : public C {
     virtual int a(){return 7;}
 };
 
+int main(){return 0;}
