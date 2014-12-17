@@ -156,3 +156,9 @@ Milestone 3
 
 3. Make sure that clang/llvm with the pass being implemented can successfully compile all SPEC2006 benchmarks and the resulting benchmarks run correctly. Manually verify the correctness of the pass on a sample from the benchmarks.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Double dereference for global var
+put the pass in transformations,
+Change 

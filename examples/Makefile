@@ -9,9 +9,10 @@ SOURCES=$(wildcard *.cpp)
 OBJECTS=$(addprefix $(BUILD)/, $(notdir $(SOURCES:.cpp=.o)))
 LLVM_OBJS=$(OBJECTS:.o=.ll)
 BINS=$(OBJECTS:.o=.bin)
+MODBINS=$(OBJECTS:.o=.mod.bin)
 UNMANGLED=$(OBJECTS:.o=.unmangled.ll)
 
-all: $(LLVM_OBJS) $(OBJECTS) $(UNMANGLED) $(BINS)
+all: $(LLVM_OBJS) $(OBJECTS) $(UNMANGLED) $(BINS) $(MODBINS)
 
 %.unmangled.ll: %.ll
 	c++filt < $< > $@
@@ -22,8 +23,11 @@ all: $(LLVM_OBJS) $(OBJECTS) $(UNMANGLED) $(BINS)
 $(BUILD)/%.o: %.cpp
 	$(CLANG) -c -flto $< -o $@
 
-$(BUILD)/%.bin: %.cpp
+$(BUILD)/%.mod.bin: %.cpp
 	$(CLANGPP) $< -o $@
+
+$(BUILD)/%.bin: %.cpp
+	clang++ $< -o $@
 
 $(OBJECTS): | $(BUILD)
 
