@@ -159,6 +159,10 @@ Milestone 3
 
 
 
-Double dereference for global var
-put the pass in transformations,
-Change 
+Double dereference for global var for GEP
+put the pass in transformations
+
+Test templates to understand what dependent type is and understand if it is
+important
+
+Understand how to modify securely LLVM IR
