@@ -166,3 +166,10 @@ Test templates to understand what dependent type is and understand if it is
 important
 
 Understand how to modify securely LLVM IR
+
+
+Which benchmarks are in CPP ?
+What load to execute ?
+How to check the output ? Checked automagically ?
+What about shifted VTable
+Fail to build : astar & omnetpp & xalancbmk 
