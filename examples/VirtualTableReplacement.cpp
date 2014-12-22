@@ -3,7 +3,7 @@ class BAD {
 public:
     virtual int one(){return 666;}
     virtual int two(){return 666;}
-    virtual char three(){return 666;}
+    virtual char three(){return 66;}
     virtual long four(){return 666;}
 };
 
