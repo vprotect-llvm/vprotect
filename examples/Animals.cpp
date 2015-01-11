@@ -1,4 +1,9 @@
+#include <stdio.h>
 #include <iostream>
+
+void printptr(void* p){
+    ::printf("Pointer: %p\n", p);
+}
 
 class Animal {
 public:

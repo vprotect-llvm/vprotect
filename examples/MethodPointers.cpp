@@ -1,5 +1,9 @@
 #include<stdio.h>
 
+void printptr(void* p){
+    ::printf("Pointer: %p\n", p);
+}
+
 class A {
     public: 
     virtual void foo(int i) { 
@@ -18,11 +22,12 @@ int main(){
     void (A::*f)(int); // declare f as ptr to some method of A
     f = &A::foo; // f now points to the foo method
     A* a = new A();
-    (a->*f)(5); // method call via f ptr, invokes A::foo
+    a->foo(1);
+    (a->*f)(2); // method call via f ptr, invokes A::foo
     
     a = new B();
-    (a->*f)(5); // method call via f ptr, invokes B::foo
+    a->foo(3);
+    (a->*f)(4); // method call via f ptr, invokes B::foo
     
-    a->foo(5);
     return 0;
 }
