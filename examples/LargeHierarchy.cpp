@@ -1,3 +1,13 @@
+#include <stdio.h>
+
+void print3ptr(void* base, void* end, void* ptr){
+    ::printf("Base: %p -- End: %p -- Ptr: %p\n", base, end, ptr);
+}
+
+void printptr(void* p){
+    ::printf("Pointer: %p\n", p);
+}
+
 class A {
 public:
     virtual int a(){return 1;}
