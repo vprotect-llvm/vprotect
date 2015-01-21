@@ -31,7 +31,7 @@ $(BUILD)/%.o: %.cpp $(CLANG)
 	$(CLANG) -c -flto $< -o $@
 
 $(BUILD)/%.mod.bin: %.cpp $(CLANGPP)
-	$(CLANGPP) -O0 -g $< -o $@
+	$(CLANGPP) -O0 -flto -g $< -o $@
 
 $(BUILD)/%.bin: %.cpp
 	clang++ -O0 -g $< -o $@
