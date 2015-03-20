@@ -1,9 +1,10 @@
 #BIN=/usr/bin
-BIN=../build-no-test/bin
-CLANG=$(BIN)/clang
-CLANGPP=$(BIN)/clang++
+BIN=../build/bin
+CC=$(BIN)/clang
+CXX=$(BIN)/clang++
 LLVMDIS=$(BIN)/llvm-dis
 OPT=$(BIN)/opt
+LD=/usr/bin/ld.gold
 
 BUILD=build
 SOURCES=$(wildcard *.cpp)
@@ -27,11 +28,11 @@ all: $(LLVM_OBJS) $(OBJECTS) $(UNMANGLED) $(BINS) $(MODBINS) $(MODLLVM_OBJS) $(M
 %.mod.o: %.o
 	$(OPT) -vt-protect $< -o $@
 
-$(BUILD)/%.o: %.cpp $(CLANG)
-	$(CLANG) -c -flto $< -o $@
+$(BUILD)/%.o: %.cpp $(CXX)
+	$(CXX) -c -O0 -flto $< -o $@
 
-$(BUILD)/%.mod.bin: %.cpp $(CLANGPP)
-	$(CLANGPP) -O0 -flto -g $< -o $@
+$(BUILD)/%.mod.bin: %.cpp $(CXX)
+	$(CXX) -O0 -flto -g $< -o $@
 
 $(BUILD)/%.bin: %.cpp
 	clang++ -O0 -g $< -o $@
