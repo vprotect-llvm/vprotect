@@ -6,7 +6,7 @@ update(){
     base_folder=$PWD
     name=$1
     path=$2
-    repo=$3
+    repo=git@github.com:vprotect-llvm/$3
 
     cd $path
 
@@ -23,7 +23,7 @@ update(){
     cd $base_folder
 }
 
-update llvm . git@bitbucket.org:dengels/vprotect-llvm.git
-update clang llvm/tools git@bitbucket.org:dengels/vprotect-clang.git
-update extra llvm/tools/clang/tools git@bitbucket.org:dengels/vprotect-clang-tools-extra.git
-update compiler-rt llvm/projects git@bitbucket.org:dengels/vprotect-compiler-rt.git
+update llvm         .                       llvm.git
+update clang        llvm/tools              clang.git
+update extra        llvm/tools/clang/tools  clang-tools-extra.git
+update compiler-rt  llvm/projects           compiler-rt.git
