@@ -1,30 +1,31 @@
 #!/bin/bash -x
 
 # Create build directory if it doesn't exist
-mkdir -p build; 
-cd build;
+mkdir -p Debug; 
+mkdir -p Release;
+
+cd Debug;
 
 # Configure
-if [ -f /usr/bin/clang -a -f /usr/bin/clang++ ]; then
-    export CC=/usr/bin/clang
-    export CXX=/usr/bin/clang++
-
-    cmake -GNinja \
+cmake -GNinja \
         -DCMAKE_BUILD_TYPE=Debug \
         -DLLVM_ENABLE_ASSERTIONS=ON \
         -DLLVM_BUILD_TESTS=ON \
-        -DLLVM_BINUTILS_INCDIR=/usr/include \
-        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
         -enable-doxygen ../llvm
-else
-    
-    cmake -GNinja \
-        -DCMAKE_BUILD_TYPE=Debug \
-        -DLLVM_ENABLE_ASSERTIONS=ON \
-        -DLLVM_BUILD_TESTS=ON \
-        -DLLVM_BINUTILS_INCDIR=/usr/include \
-        -enable-doxygen ../llvm
-fi 
 
 # Build
 ninja
+
+
+cd ../Release;
+
+# Configure
+cmake -GNinja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DLLVM_ENABLE_ASSERTIONS=OFF \
+        -DLLVM_BUILD_TESTS=OFF \
+        ../llvm
+
+# Build
+ninja
+

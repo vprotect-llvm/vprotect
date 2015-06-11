@@ -5,6 +5,8 @@ llvm
 build
 build-qt
 build-no-test
+Release
+Debug
 
 # Binaray files
 *.out
